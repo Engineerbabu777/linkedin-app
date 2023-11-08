@@ -25,24 +25,24 @@ import {
     const router = useRouter();
     const handleRegister = () => {
         // console.log("hello")
-        // const user = {
-        //     name:name,
-        //     email:email,
-        //     password:password,
-        //     profileImage:image
-        // }
+        const user = {
+            name:name,
+            email:email,
+            password:password,
+            profileImage:image
+        }
   
-        // axios.post("http://localhost:3000/register",user).then((response) => {
-        //     console.log(response);
-        //     Alert.alert("Registration successful","You have been registered successfully");
-        //     setName("");
-        //     setEmail("");
-        //     setPassword("");
-        //     setImage("");
-        // }).catch((error) => {
-        //     Alert.alert("Registration failed","An error occurred while registering");
-        //     console.log("registration failed",error)
-        // });
+        axios.post("http://192.168.186.189:4444/register",user).then((response) => {
+            console.log(response);
+            Alert.alert("Registration successful","You have been registered successfully");
+            setName("");
+            setEmail("");
+            setPassword("");
+            setImage("");
+        }).catch((error) => {
+            Alert.alert("Registration failed","An error occurred while registering");
+            console.log("registration failed",error)
+        });
     }
     return (
       <SafeAreaView
