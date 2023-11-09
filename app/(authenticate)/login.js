@@ -40,7 +40,7 @@ export default function Login () {
       password: password
     }
 
-    axios.post('http://192.168.186.189:4444/login', user).then(response => {
+    axios.post('http://192.168.148.29:4444/login', user).then(response => {
       console.log(response)
       const token = response.data.token
       AsyncStorage.removeItem('authToken');

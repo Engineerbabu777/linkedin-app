@@ -9,23 +9,25 @@ import {
   import React, { useState } from "react";
   
   const UserProfile = ({ item, userId }) => {
+    console.log({item,userId})
     const [connectionSent, setConnectionSent] = useState(false);
     const sendConnectionRequest = async (currentUserId, selectedUserId) => {
-    //   try {
-    //     const response = await fetch("http://192.168.186.189/4444/connection-request", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({ currentUserId, selectedUserId }),
-    //     });
+      console.log({currentUserId, selectedUserId})
+      try {
+        const response = await fetch("http://192.168.148.29:4444/connection-request", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ currentUserId, selectedUserId }),
+        });
   
-    //     if (response.ok) {
-    //       setConnectionSent(true);
-    //     }
-    //   } catch (error) {
-    //     console.log("error", error);
-    //   }
+        if (response?.ok) {
+          setConnectionSent(true);
+        }
+      } catch (error) {
+        console.log("error", error);
+      }
     };
     return (
       <View

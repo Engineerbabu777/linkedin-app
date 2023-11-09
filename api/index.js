@@ -192,6 +192,7 @@ app.get('/users/:userId', async (req, res) => {
 app.post('/connection-request', async (req, res) => {
   try {
     const { currentUserId, selectedUserId } = req.body
+    console.log({currentUserId, selectedUserId});
 
     // TO THE OTHER USER UPDATING HIS CONNECTION REQUESTS!
     await User.findByIdAndUpdate(selectedUserId, {

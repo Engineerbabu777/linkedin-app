@@ -38,7 +38,7 @@ export default function Home () {
     console.log({ new: true })
     try {
       const response = await axios.get(
-        `http://192.168.186.189:4444/profile/${userId}`
+        `http://192.168.148.29:4444/profile/${userId}`
       )
       const userData = response.data.user
       console.log({ userData })
@@ -62,7 +62,7 @@ export default function Home () {
   }, [userId])
   const fetchUsers = async () => {
     axios
-      .get(`http://192.168.186.189:4444/users/${userId}`)
+      .get(`http://192.168.148.29:4444/users/${userId}`)
       .then(response => {
         setUsers(response.data)
       })
@@ -72,30 +72,30 @@ export default function Home () {
   }
   console.log({ users })
 
-  //   useEffect(() => {
-  //     if (userId) {
-  //       fetchFriendRequests();
-  //     }
-  //   }, [userId]);
-  //   const fetchFriendRequests = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `http://192.168.186.189:4444/connection-request/${userId}`
-  //       );
-  //       if (response.status === 200) {
-  //         const connectionRequestsData = response.data?.map((friendRequest) => ({
-  //           _id: friendRequest._id,
-  //           name: friendRequest.name,
-  //           email: friendRequest.email,
-  //           image: friendRequest.profileImage,
-  //         }));
+  useEffect(() => {
+    if (userId) {
+      fetchFriendRequests()
+    }
+  }, [userId])
+  const fetchFriendRequests = async () => {
+    try {
+      const response = await axios.get(
+        `http://192.168.148.29:4444/connection-request/${userId}`
+      )
+      if (response.status === 200) {
+        const connectionRequestsData = response.data?.map(friendRequest => ({
+          _id: friendRequest._id,
+          name: friendRequest.name,
+          email: friendRequest.email,
+          image: friendRequest.profileImage
+        }))
 
-  //         setConnectionRequests(connectionRequestsData);
-  //       }
-  //     } catch (error) {
-  //       console.log("error", error);
-  //     }
-  //   };
+        setConnectionRequests(connectionRequestsData)
+      }
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
   //   console.log(connectionRequests);
   return (
     <>

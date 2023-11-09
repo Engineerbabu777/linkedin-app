@@ -12,7 +12,7 @@ const ConnectionRequest = ({
   const acceptConnection = async (requestId) => {
     try {
       const response = await fetch(
-        "http://192.168.186.189/4444/connection-request/accept",
+        "http://192.168.148.29:4444/connection-request/accept",
         {
           method: "POST",
           headers: {
